@@ -182,7 +182,10 @@ class Hash{
 			}
 			arreglo[indiceArreglo] = elemento;
 		}
+		
+		
 	}
+	
 	
 	public void mostrar() {
 		int incremento = 0;
@@ -211,8 +214,30 @@ class Hash{
 		}
 	}
 	
-	
+	public String buscarClave(String elemento) {
+		
+		int indiceArrglo = Integer.parseInt(elemento) % 99;
+		int contador = 0;
+		contador1[0]++;
+		while (arreglo[indiceArrglo] != "-1") {
+			contador1[1]++;
+			if (arreglo[indiceArrglo].equals(elemento)) {
+				System.out.println("Elemento " + elemento + " se encontro en el indice " + indiceArrglo);
+				return arreglo[indiceArrglo];
+			}
+			indiceArrglo++;
+			indiceArrglo %= tamaño;
+			contador++;
+			contador1[1]++;
+			if (contador > 100) {
+				System.out.println("------Error-------");
+				break;
+			}
+		}
+		return null;
+	}
 }
+
 public class PruebaBusquedas {
 
 	public static void main(String[] args) {
