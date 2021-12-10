@@ -110,6 +110,36 @@ class Menu{
 	}
 }
 
+class BusquedaBinaria {
+
+	public boolean busquedaBin(int[] numeros, int valorBuscado) {
+		int[] contador= new int[2];
+
+		int inicio=0;
+		int fin=numeros.length-1;
+		int x=0;
+		contador[0]++;
+		while (inicio<=fin) {
+			int puntero=(int)((inicio+fin)/2);
+			contador[1]++;
+			if (valorBuscado == numeros[puntero]) {
+				x=1;
+				break;
+			}else if(valorBuscado>numeros[puntero]) {
+				inicio=puntero+1;
+			}else {
+				fin=puntero-1;
+			}
+				
+		}
+		System.out.println("Numero de recorridos "+contador[0]);
+		System.out.println("Numero de comparaciones "+contador[1]);
+		return x==1;
+
+	}
+
+}
+
 public class PruebaBusquedas {
 
 	public static void main(String[] args) {
