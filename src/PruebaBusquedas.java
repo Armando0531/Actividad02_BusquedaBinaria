@@ -163,6 +163,28 @@ class Hash{
 		Arrays.fill(arreglo, "-1");
 	}
 	
+	public void funcionHash(String[] cadArreglo, String[] arreglo) {
+		int i;
+		
+		contador1[0]++;
+		for (i = 0; i < cadArreglo.length; i++) {
+			String elemento = cadArreglo[i];
+			int indiceArreglo = Integer.parseInt(elemento) % 20;
+			System.out.println("Indice: " + indiceArreglo + " para " + elemento);
+		
+			contador1[0]++;
+			while (arreglo[indiceArreglo] != "-1") {
+				contador1[1]++;
+				;
+				indiceArreglo++;
+				System.out.println("Colisión en el indice: " + (indiceArreglo - 1) + " cambiando por " + indiceArreglo);
+				indiceArreglo %= tamaño; 
+			}
+			arreglo[indiceArreglo] = elemento;
+		}
+	}
+	
+	
 }
 public class PruebaBusquedas {
 
