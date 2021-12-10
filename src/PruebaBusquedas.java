@@ -140,6 +140,30 @@ class BusquedaBinaria {
 
 }
 
+class Hash{
+	
+	String[] arreglo;
+	int tamaño;
+	int contador;
+	int [] contador1=new int[2];
+	public void reiniciarContador() {
+		contador1[0]=0;
+		contador1[1]=0;
+	}
+	public void mostrarContador() {
+		System.out.println("Numero de recorridos "+contador1[0]);
+		System.out.println("Numero de comparaciones "+contador1[1]);
+		contador1[0]=0;
+		contador1[1]=0;
+	}
+	// Constructor
+	public Hash(int tam) {
+		tamaño = tam;
+		arreglo = new String[tam];
+		Arrays.fill(arreglo, "-1");
+	}
+	
+}
 public class PruebaBusquedas {
 
 	public static void main(String[] args) {
