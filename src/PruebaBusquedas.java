@@ -241,7 +241,74 @@ class Hash{
 public class PruebaBusquedas {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int cnt=100;
+		int[] nums = new int[cnt];
+		for (int i = 0; i < 100; i++) {
+			nums[i]=(int)(Math.random()*100);
+		}
+		
+		Menu.impresionNumeros(nums);
+		boolean salir=false;
+		String[] opciones = {"Buscar valor por Busqueda Binaria","Buscar valor por Hash"};
+		
+		do {
+			
+			Menu.mostrarMenu(opciones);
+			byte opc= (byte) Menu.validacionNatural();
+			
+			if (opc==(opciones.length+1)) {
+				salir=true;
+			}else {
+				switch (opc) {
+				case 1:
+					System.out.println("Valor a buscar:");
+					int valor = Menu.validacionNatural();
+					long ini = System.nanoTime();
+					int[] numeros = Insercion.ordenacionInsercion(nums);
+					
+					BusquedaBinaria bb = new BusquedaBinaria();
+					
+					if(bb.busquedaBin(numeros, valor)) {
+						System.out.println(valor+" encontrado");
+					}else {
+						System.out.println(valor+" no encontrado");
+					}
+					long fin = System.nanoTime();
+					System.out.println("Ejecucion en milisegundos: "+(fin-ini));
+					
+					break;
+				case 2:
+					
+					String[] numsHash=new String[cnt];
+					for (int i = 0; i < cnt; i+=1) {
+						numsHash[i]=Integer.toString(nums[i]);
+					}
+					
+					Hash funcion = new Hash(100);
+					funcion.funcionHash(numsHash, funcion.arreglo);
+					
+					System.out.println("Valor a buscar");
+					long inic = System.nanoTime();
+					String elemento = Integer.toString(Menu.validacionNatural());
+					String buscarElemento = funcion.buscarClave(elemento);	
+					if(buscarElemento==null) {
+						System.out.println("\nElemento no encontrado");
+					}
+					
+					funcion.mostrarContador();
+					long fina = System.nanoTime();
+					System.out.println("Ejecucion en milisegundos: "+(fina-inic));
+					
+					
+					
+					break;
+				default:System.out.println("Opción no válida");break;
+				}
+				Menu.impresionNumeros(nums);
+			}
+			
+		} while (!salir);
+		System.out.println("Fin de ejecucion");
 
 	}
 
